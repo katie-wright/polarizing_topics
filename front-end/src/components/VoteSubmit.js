@@ -21,7 +21,7 @@ class VoteSubmit extends Component{
         this.vote = this.vote.bind(this);
     }
     componentWillMount(){
-        axios.get('http://localhost:8080/topics/')
+        axios.get('/topics')
             .then(res=>{
                 this.setState({
                     topics: res.data
@@ -45,7 +45,7 @@ class VoteSubmit extends Component{
             if (upVotePercent >= 5 && upVotePercent <= 95) {
                 let include = (upVotePercent >= 30 && upVotePercent <=70);
                 if (topic.include !== include) {
-                    axios.put("http://localhost:8080/topics/"+topic._id, {include: include})
+                    axios.put("/topics/"+topic._id, {include: include})
                         .then(res=>{
                             if(res.status===200) {
                                 topicsCopy[index]=res.data
@@ -60,7 +60,7 @@ class VoteSubmit extends Component{
                 }
             }
             else if (topic.totalVotes>=20) {
-                axios.delete("http://localhost:8080/topics/"+topic._id)
+                axios.delete("/topics/"+topic._id)
                     .then(res=>{
                         console.log("deleted:", res.data);
                         topicsCopy.splice(index, 1);
@@ -88,7 +88,7 @@ class VoteSubmit extends Component{
         localStorage.setItem("authToken", "");
     }
     newTopic(input){
-        axios.post('http://localhost:8080/topics/', {
+        axios.post('/topics', {
             user: this.state.username ? this.state.username : 'Anonymous',
             text: input
         })
@@ -126,7 +126,7 @@ class VoteSubmit extends Component{
                 break;
             }
         };
-        axios.put('http://localhost:8080/topics/'+id, updateData)
+        axios.put('/topics/'+id, updateData)
             .then(res=>{
                 if(res.status===200) {
                     topicsCopy[index]=res.data;

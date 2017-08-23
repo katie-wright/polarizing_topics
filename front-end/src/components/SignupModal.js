@@ -29,11 +29,11 @@ class SignupModal extends Component {
         alert("Please enter a username and password");
     }
     else {
-        axios.post('http://localhost:8080/register',this.state)
+        axios.post('/register',this.state)
         .then(res =>{
             console.log(res);
             if (res.status===200){
-                return (axios.post('http://localhost:8080/login',this.state))
+                return (axios.post('/login',this.state))
             }
         })
         .then(res =>{

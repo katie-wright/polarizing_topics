@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
-const socket = io('http://localhost:8080');
+const socket = io('/');
 
 class Play extends Component{
     constructor(){
@@ -28,7 +28,7 @@ class Play extends Component{
         if (players && name) {
             let self=this;
             if (self.state.topics.length===0){
-                axios.get('http://localhost:8080/topics?include=true', {
+                axios.get('/topics?include=true', {
                     params: {
                         players: players,
                         name: name

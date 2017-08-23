@@ -26,7 +26,7 @@ class LoginModal extends Component {
     formSubmit(e){
     e.preventDefault();
     if (this.state.username && this.state.password) {
-        axios.post('http://localhost:8080/login',this.state)
+        axios.post('/login',this.state)
             .then(res =>{
                 if (res.status===200) {
                     localStorage.setItem("authToken", res.data.token);

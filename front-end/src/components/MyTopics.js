@@ -11,7 +11,7 @@ class MyTopics extends Component {
     componentWillMount(){
         let authToken = localStorage.getItem("authToken");
         if (authToken) {
-            axios.get("http://localhost:8080/privatedata", {
+            axios.get("/privatedata", {
                 headers:
                 {"authorization": authToken}
             })

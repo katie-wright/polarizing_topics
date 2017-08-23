@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^0.16.2",
     "react": "^15.6.1",
@@ -17,3 +18,4 @@
     "eject": "react-scripts eject"
   }
 }
+
