@@ -29,6 +29,8 @@ GameSchema.plugin(deepPopulate, {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(__dirname + './../build'));
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "PUT, DELETE");
@@ -123,6 +125,10 @@ app.get('/privatedata', authorize, (req,res)=>{
                 console.log(err);
                 res.send(err);
             })
+});
+
+app.get('*', (req, res) => {
+    res.sendFile('index.html',{root: __dirname + './../build'});
 });
 
 io.on('connection', function (socket) {
