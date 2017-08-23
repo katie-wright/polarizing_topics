@@ -128,7 +128,7 @@ app.get('/privatedata', authorize, (req,res)=>{
 });
 
 app.get('*', (req, res) => {
-    res.sendFile('index.html',{root: __dirname + './../build'});
+    res.sendFile('index.html',{root: __dirname + './../front-end/build'});
 });
 
 io.on('connection', function (socket) {
