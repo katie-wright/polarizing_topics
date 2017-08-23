@@ -1,0 +1,89 @@
+h1{
+  font-family: 'Bowlby One', cursive;
+  font-size: 60px;
+}
+h2 {
+  font-family: 'Bowlby One', cursive;
+}
+h3{
+  font-family: 'Bowlby One', cursive;
+}
+
+.subheadings {
+  font-family: 'Bowlby One', cursive;
+}
+
+.myHeader {
+  font-size: 18px;
+  color: #1a1a1a;
+  border: solid thin lightslategray;
+}
+
+.topic-card{
+  border: solid thin black;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  text-align: center;
+}
+
+.jumbotron{
+  margin-top: 10px;
+  background-color: lightgray;
+}
+
+.topic-info{
+  display: inline-block;
+}
+
+.submit-button {
+  background: slategray;
+  color: white;
+}
+
+.topic-vote {
+  border: thin solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.upvote-button {
+  background: lightgreen;
+  display: inline-block;
+}
+
+.downvote-button {
+  background: lightcoral;
+  display: inline-block;
+}
+
+.topic-vote-text {
+  padding: 10px 5px 5px 5px;
+  word-wrap: break-word;
+  font-size: 18px;
+}
+
+.App {
+  margin-bottom: 10px;
+}
+
+.votes {
+    -webkit-transition: width 1s ease;
+    -moz-transition: width 1s ease;
+    -o-transition: width 1s ease;
+    transition: width 1s ease;
+    
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    width: 0px;
+}
+
+.votes.show {
+    width: 37px;
+    display: inline-block!important;
+}
