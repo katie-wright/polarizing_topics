@@ -48,10 +48,7 @@ class VoteSubmit extends Component{
                     axios.put("/topics/"+topic._id, {include: include})
                         .then(res=>{
                             if(res.status===200) {
-                                topicsCopy[index]=res.data
-                                this.setState({
-                                    topics: topicsCopy
-                                });
+                                console.log("Topic updated, included:", include);
                             }
                         })
                         .catch(err=>{
@@ -114,19 +111,19 @@ class VoteSubmit extends Component{
     }
     vote(id, upDownVotes){
         let topicsCopy = Array.from(this.state.topics);
-        let updateData;
+        // let updateData;
         let index;
         for(let i=0; i<topicsCopy.length; i++){
             if (topicsCopy[i]._id===id) {
-                updateData = {
-                    [upDownVotes]: topicsCopy[i][upDownVotes] + 1,
-                    totalVotes: topicsCopy[i].totalVotes + 1
-                }
+                // updateData = {
+                //     [upDownVotes]: topicsCopy[i][upDownVotes] + 1,
+                //     totalVotes: topicsCopy[i].totalVotes + 1
+                // }
                 index = i;
                 break;
             }
         };
-        axios.put('/topics/'+id, updateData)
+        axios.put('/topics/'+id, {opinion: upDownVotes})
             .then(res=>{
                 if(res.status===200) {
                     topicsCopy[index]=res.data;

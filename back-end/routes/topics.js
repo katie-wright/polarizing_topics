@@ -101,19 +101,36 @@ router.post('/', (req,res)=>{
 });
 
 router.put('/:id', (req,res)=>{
-    const updateData = req.body;
+    if (req.body.opinion) {
+        const upDownVotes=req.body.opinion;
+        Topic.findById(req.params.id)
+            .then(topic=>{
+                topic[upDownVotes] ++;
+                topic.totalVotes ++;
+                return topic.save();
+            })
+            .then(savedTopic=>{
+                res.json(savedTopic);
+            })
+            .catch(err=>{
+                res.json(err);
+                console.log(err);
+            })
+    }
+    else if (req.body.include!==undefined) {
+        const updateData = req.body;
+        Topic.findOneAndUpdate({_id: req.params.id}, updateData, {})
+            .then(oldTopic=>{
+               res.send("Topic updated");
+            })
+            .catch(err=>{
+                res.json(err);
+                console.log(err);
+            })
+            
+    }
 
-    Topic.findOneAndUpdate({_id: req.params.id}, updateData, {})
-        .then(oldTopic=>{
-            return Topic.findOne({_id: oldTopic._id})
-        })
-        .then(newTopic=>{
-            res.json(newTopic);
-        })
-        .catch(err=>{
-            res.json(err);
-            console.log(err);
-        })
+        
 });
 
 router.delete('/:id', (req,res)=>{
