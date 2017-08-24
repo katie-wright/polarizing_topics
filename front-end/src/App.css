@@ -87,3 +87,12 @@ h3{
     width: 37px;
     display: inline-block!important;
 }
+
+@media (max-width: 450px) {
+  h1 {
+    font-size: 40px;
+  }
+  .topic-title {
+    font-size: 18px;
+  }
+}
